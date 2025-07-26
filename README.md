@@ -1,12 +1,42 @@
-# React + Vite
+# 🎬 Movies App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern movies web application built with **React** and **Vite**, following the **Clean Architecture** (MVVM pattern). The app provides a scalable, maintainable codebase with a responsive and elegant UI using **TailwindCSS**, **Ant Design**, and **React Slick** for carousels.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧠 Architecture
 
-## Expanding the ESLint configuration
+This project uses **Clean Architecture** with the **MVVM (Model-View-ViewModel)** pattern to ensure separation of concerns and maintainability.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Folder Structure
+
+src/
+├── assets/ # Static assets (images, icons, etc.)
+├── data/ # Data sources (e.g. repositories, API)
+├── domain/ # Use cases and business logic
+├── mock/ # Mock data (fake data)
+├── presentation/ # ViewModels and UI components
+├── routes/ # Navigation routes
+
+---
+
+## 🚀 Tech Stack
+
+| Tech            | Description                                     |
+|-----------------|-------------------------------------------------|
+| **React**       | UI library for building components              |
+| **Vite**        | Fast development bundler                        |
+| **TailwindCSS** | Utility-first CSS for rapid UI development      |
+| **Ant Design**  | UI component library with styled components     |
+| **React Slick** | Carousel/slider component for showcasing content |
+| **MVVM**        | Design pattern separating UI & logic            |
+
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/vardkhachatryan000/react-tv-app.git
+cd react-tv-app
+npm install
+npm run dev

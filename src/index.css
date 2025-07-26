@@ -22,12 +22,3 @@ body {
   box-sizing: border-box;
 }
 
-.ant-carousel .slick-prev::before,
-.ant-carousel .slick-next::before {
-  opacity: 1;
-}
-
-.ant-carousel .slick-next,
-.ant-carousel .slick-prev {
-  opacity: 1;
-}

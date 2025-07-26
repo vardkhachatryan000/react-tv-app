@@ -19,7 +19,7 @@ export const movieRepository = {
             
         return movies;
     },
-    async getFeatureMovie() {
+    async getFeaturedMovie() {
         const allMovies = await this.getAllMovies();
         return featuredMapToData(allMovies.Featured);
     },

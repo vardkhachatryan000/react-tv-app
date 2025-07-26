@@ -33,22 +33,21 @@ export default function Sidebar({ collapsed, setCollapsed }) {
                     flexDirection: 'column', 
                     height: '100%' 
                 }}>
-                {collapsed ? null : (
-                    <div className='flex items-center gap-4 px-3 mb-4'>
-                        <Avatar size={70} src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?_gl=1*1fzncyj*_ga*Nzk2NTQyNTI2LjE3NTM0NzY0ODA.*_ga_8JE65Q40S6*czE3NTM0NzY0NzkkbzEkZzEkdDE3NTM0NzY0ODQkajU1JGwwJGgw" />
-                        <span className='text-xl'>Daniel</span>
-                    </div>
-                )}
+
+                <div className={collapsed ? 'invisible' : 'flex items-center gap-4 px-3 mb-4'}>
+                    <Avatar size={70} src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?_gl=1*1fzncyj*_ga*Nzk2NTQyNTI2LjE3NTM0NzY0ODA.*_ga_8JE65Q40S6*czE3NTM0NzY0NzkkbzEkZzEkdDE3NTM0NzY0ODQkajU1JGwwJGgw" />
+                    <div className='text-xl'>Daniela</div>
+                </div>
 
                 <SidebarItems collapsed={collapsed} />
 
-                {collapsed ? null : <div className='flex-1 flex flex-col justify-end px-3 mb-8'>
+                <div className={collapsed ? 'invisible' : 'flex-1 flex flex-col justify-end px-3 mb-8'}>
                     <div className='flex flex-col justify-end items-start gap-4 text-[#858688]'>
-                        <div className='text-lg uppercase'>Language</div>
-                        <div className='text-lg uppercase'>Get help</div>
-                        <div className='text-lg uppercase'>Exit</div>
+                        <div className='text-lg uppercase truncate'>Language</div>
+                        <div className='text-lg uppercase truncate'>Get help</div>
+                        <div className='text-lg uppercase truncate'>Exit</div>
                     </div>
-                </div>}
+                </div>
             </div>
         </Sider>
     )

@@ -3,12 +3,13 @@ import { getMoviesUseCase } from "@/domain/usecases/getMoviesUseCase";
 import { getFeaturedMovieUseCase } from "@/domain/usecases/getFeaturedMovieUseCase";
 import { setSelectedMovieIdUseCase } from "@/domain/usecases/setSelectedMovieIdUseCase";
 
-export function useMovieViewModel() {
+export function useHomeViewModel() {
     const [movies, setMovies] = useState([]);
     const [featuredMovie, setFeaturedMovie] = useState(null);
-    const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+    const [isBgVideoPlaying, setIsBgVideoPlaying] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedMovie, setSelectedMovie] = useState(null);
+    const [isVideoPlayerVisible, setIsVideoPlayerVisible] = useState(false);
 
     useEffect(() => {
         const loadData = async () => {
@@ -26,12 +27,12 @@ export function useMovieViewModel() {
     useEffect(() => {
         if (!selectedMovie) return;
 
-        setIsVideoPlaying(false);
+        setIsBgVideoPlaying(false);
         setFeaturedMovie(selectedMovie);
         setSelectedMovieIdUseCase(selectedMovie.id);
 
         const timeout = setTimeout(() => {
-            setIsVideoPlaying(Boolean(selectedMovie.videoUrl));
+            setIsBgVideoPlaying(Boolean(selectedMovie.videoUrl));
         }, 2000);
 
         return () => clearTimeout(timeout);
@@ -44,8 +45,10 @@ export function useMovieViewModel() {
     return {
         movies,
         featuredMovie,
-        isVideoPlaying,
+        isBgVideoPlaying,
+        isVideoPlayerVisible,
         isLoading,
-        selectMovie
+        selectMovie,
+        setIsVideoPlayerVisible
     };
 }

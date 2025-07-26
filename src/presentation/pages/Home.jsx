@@ -1,11 +1,19 @@
 import HeroSection from '../components/Hero/Hero';
 import Trending from '../components/Trending/Trending';
-import { useMovieViewModel } from '@/presentation/viewmodels/MovieViewModel.js';
+import { useHomeViewModel } from '@/presentation/viewmodels/HomeViewModel.js';
 import { Flex, Spin } from "antd";
 import { LoadingOutlined } from '@ant-design/icons';
 
 export default function Home() {
-  const { movies, featuredMovie, isVideoPlaying, isLoading, selectMovie } = useMovieViewModel();
+  const { 
+    movies, 
+    featuredMovie, 
+    isBgVideoPlaying,
+    isVideoPlayerVisible,
+    isLoading, 
+    selectMovie,
+    setIsVideoPlayerVisible
+  } = useHomeViewModel();
 
   if (isLoading) {
     return (
@@ -24,7 +32,12 @@ export default function Home() {
   } else {
     return (
       <>
-        <HeroSection featuredMovie={featuredMovie} isVideoPlaying={isVideoPlaying} />
+        <HeroSection 
+          featuredMovie={featuredMovie} 
+          isBgVideoPlaying={isBgVideoPlaying} 
+          isVideoPlayerVisible={isVideoPlayerVisible}
+          setIsVideoPlayerVisible={setIsVideoPlayerVisible}
+        />
         <Trending movies={movies} selectMovie={selectMovie} />
       </>
     );

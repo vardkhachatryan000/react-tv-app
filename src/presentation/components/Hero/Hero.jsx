@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { Button, Image } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 
-export default function Hero({ featuredMovie, isVideoPlaying }) {
-    const [visible, setVisible] = useState(false);
-
+export default function Hero({ featuredMovie, isBgVideoPlaying, isVideoPlayerVisible, setIsVideoPlayerVisible }) {
     function getFeaturedCoverImage() {
         return `/images/${featuredMovie.coverImage}`;
     }
@@ -18,7 +16,7 @@ export default function Hero({ featuredMovie, isVideoPlaying }) {
             className="relative min-h-[60vh] flex items-center"
             aria-label="Hero Section"
         >
-            {isVideoPlaying ? (
+            {isBgVideoPlaying ? (
                 <video
                     autoPlay
                     muted
@@ -39,13 +37,13 @@ export default function Hero({ featuredMovie, isVideoPlaying }) {
 
             <div className="relative px-4 max-w-1/2 flex flex-col gap-4 z-10">
                 <span className='text-2xl'>{featuredMovie.category}</span>
-                <img src={getFeaturedTitleImage()} alt="Title Img" />
+                <img src={getFeaturedTitleImage()} alt={featuredMovie.title} />
                 <div className='flex flex-col text-2xl'>
                     <span className='flex'>{featuredMovie.releaseYear} {featuredMovie.rating} {featuredMovie.duration}</span>
                     <p className='mt-3'>{featuredMovie.description}</p>
                 </div>
                 <div className='flex gap-4'>
-                    <Button type="primary" shape="round" icon={<CaretRightOutlined />} size="large" onClick={() => setVisible(true)}>
+                    <Button type="primary" shape="round" icon={<CaretRightOutlined />} size="large" onClick={() => setIsVideoPlayerVisible(true)}>
                         Play
                     </Button>
                     <Button type="default" shape="round" size="large">
@@ -56,7 +54,7 @@ export default function Hero({ featuredMovie, isVideoPlaying }) {
                     style={{ display: 'none' }}
                     width={200}
                     preview={{
-                        visible,
+                        visible: isVideoPlayerVisible,
                         destroyOnHidden: true,
                         imageRender: () => (
                             <video
@@ -68,7 +66,7 @@ export default function Hero({ featuredMovie, isVideoPlaying }) {
                         ),
                         toolbarRender: () => null,
                         onVisibleChange: value => {
-                            setVisible(value);
+                            setIsVideoPlayerVisible(value);
                         },
                     }}
                 />
